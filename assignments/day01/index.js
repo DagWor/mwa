@@ -1,3 +1,13 @@
-const Fibonacci = require("./service/fibonacci")
+const childProcess = require("child_process");
 
-console.log(Fibonacci(9))
+
+console.log("1");
+
+const newProcess = childProcess.spawn(
+    "node",
+    ["service/fibonacci.js"],
+    {
+        stdio: 'inherit'
+    }
+)
+console.log("3");
