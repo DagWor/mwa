@@ -4,3 +4,9 @@ function Fibonacci(number) {
 }
 
 module.exports = Fibonacci
+
+/**
+ * module.exports = {
+ *      fibo: Fibonacci
+ * }
+ */
