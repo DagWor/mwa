@@ -1,0 +1,17 @@
+{
+  "name": "app18",
+  "version": "1.0.0",
+  "description": "This is a data-driven sample project",
+  "main": "app18.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app18.js",
+    "server": "nodemon app18.js"
+  },
+  "author": "Dagmawi Worku",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}
