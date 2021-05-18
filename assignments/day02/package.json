@@ -1,0 +1,17 @@
+{
+  "name": "day02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "day02.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node day02.js",
+    "server": "nodemon day02.js"
+  },
+  "author": "Dagmawi Worku",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}

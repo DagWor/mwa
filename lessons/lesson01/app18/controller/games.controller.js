@@ -6,7 +6,7 @@ module.exports.gameGetAll = (req, res) => {
     var count = 5
 
     if(req.query && req.query.offset) offset = parseInt(req.query.offset)
-    else if(req.query && req.query.count) count = parseInt(req.query.count)
+    if(req.query && req.query.count) count = parseInt(req.query.count)
     const parsedData = data.slice(offset, offset + count)
     res.status(200).json(parsedData);
 }
