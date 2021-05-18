@@ -1,0 +1,17 @@
+{
+  "name": "app13",
+  "version": "1.0.0",
+  "description": "This is a data-driven sample project",
+  "main": "app13.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app13.js",
+    "server": "nodemon app13.js"
+  },
+  "author": "Dagmawi Worku",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}
