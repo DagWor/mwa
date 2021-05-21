@@ -1,0 +1,17 @@
+{
+  "name": "app08",
+  "version": "1.0.0",
+  "description": "mongoDb to NodeJS",
+  "main": "app08.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app08.js",
+    "server": "nodemon app08.js"
+  },
+  "author": "Dagmawi Worku",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.12.10",
+    "nodemon": "^2.0.7"
+  }
+}

@@ -26,24 +26,38 @@ module.exports.gameGetAll = (req, res) => {
 
 // module.exports.gameGetById = (req, res) => Game.findById(req.params.id, (err, game) => res.status(200).json(game));
 module.exports.gameGetById = (req, res) => Game.findById(req.params.id).exec((err, game) => {
-    const response = {
-        status: 200,
-        message: game
-    }
-    if(err) {
-        response.status = 500;
-        response.message = {'message': 'Game not found due to Server issues'}
-    }
-    else if(!game) {
-        response.status = 404;
-        response.message = {'message': `Could not get game with ID ${req.params.id}`};
-    }
+    if(err) res.status(200).json({'message' : 'Game not found'})
+    else if(!game) res.status(404).json({'message': `Could not get game with ID ${req.params.id}`})
+    else res.status(200).json(game);
 
-    res.status(response.status).json(response.message)
 });
 
 module.exports.gamesAddOne = (req, res) => {
+    const response = {
+        status: 201,
+        message: ""
+    }
     if (req.body && req.body.title && req.body.price && req.body.rate) {
+        const newGame = {};
+        newGame.title = req.body.price
+        newGame.price = req.body.title
+        newGame.rate = req.body.rate
+        Game.create(newGame, (err, game) => {
+            if(err){
+                response.status = 500;
+                response.message = err
+            } else response.message = game
+
+            res.status(response.status).json(response.message);
+        })
+    } else {
+        response.status = 400;
+        response.message = 'Game not found'
+
+        res.status(response.status).json(response.message);
+    }
+
+    /*if (req.body && req.body.title && req.body.price && req.body.rate) {
 
         let newGame = new Game({
             price: req.body.price,
@@ -56,7 +70,7 @@ module.exports.gamesAddOne = (req, res) => {
             .then((newGame) => res.status(200).send(`Successfully Added ${newGame.title} Game.`))
             .catch((err) => console.log(err));
 
-    } else res.status(400).json({ error: "Missing information" })
+    } else res.status(400).json({ error: "Missing information" })*/
 }
 
 module.exports.gameGetPublisher = (req, res) => {
