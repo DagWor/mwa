@@ -4,16 +4,22 @@ mongoose.set('useCreateIndex', true);
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 
-
+const pointSchema = new mongoose.Schema({
+    type: {
+      type: String,
+      enum: ['Point'],
+    },
+    coordinates: {
+      type: [Number],
+    }
+  });
+  
 const PublisherSchema = new Schema({
     name: String,
     location: {
-        // type: "Point",
-        coordinates:{
-            type: [Number],
-            index: '2dsphere'
-        }
-    }
+        type: pointSchema,
+        index: '2dsphere' 
+      }
 })
 
 const GameSchema = new Schema({

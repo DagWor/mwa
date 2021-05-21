@@ -8,9 +8,14 @@ router.route('/games')
 
 
 router.route('/games/:id')
-.get(controller.gameGetById);
+.get(controller.gameGetById)
+.put(controller.gamesUpdateOne)
 
 router.route('/games/:id/publisher')
 .get(controller.gameGetPublisher)
+
+router.route('/games/:id/publisher')
+.get(controller.gameGetPublisher)
+.post(controller.publishersAddOne)
 
 module.exports = router;
