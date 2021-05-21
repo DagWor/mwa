@@ -1,9 +1,15 @@
 const express = require('express');
 const app = express();
 const api = require('./api/routes/games');
+const path = require('path');
 require('./api/data/db');
 
 app.set('port', 5000);
+
+app.use('/css', (req, res, next) => {
+    next();
+})
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json({extended: false}));
 app.use('/api', api);
