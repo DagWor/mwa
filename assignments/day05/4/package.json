@@ -1,0 +1,18 @@
+{
+  "name": "school",
+  "version": "1.0.0",
+  "description": "",
+  "main": "day04.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node day04.js",
+    "server": "nodemon day04.js"
+  },
+  "author": "Dagmawi Shiferaw",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.10",
+    "nodemon": "^2.0.7"
+  }
+}
