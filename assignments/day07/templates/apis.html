@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> API Page </title>
+    <style>
+        .headers {
+            font-weight: 900;
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> APIs </h1>
+    <div>
+        <table>
+            <thead>
+                <td class="headers"> API </td>
+                <td class="headers"> Description </td>
+                <td class="headers"> Category &emsp;</td>
+                <td class="headers"> Link </td>
+            </thead>
+            <tbody>
+                <tr ng-repeat="api in apiCtrl.apis">
+                    <td> {{api.API}} &emsp;</td>
+                    
+                    <td> {{api.Description}}&emsp; </td>
+                    <td> {{api.Category}}&emsp; </td>
+                    <td> <a href={{api.Link}}>{{api.Link}}</a>&emsp; </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

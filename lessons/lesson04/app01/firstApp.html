@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="firstApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Sample project</title>
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script>
+        angular.module('firstApp', [])
+        .controller('firstController', firstController)
+        .controller('secondController', secondController)
+
+        function secondController($scope) {
+            let vm = this;
+            vm.name = 'Jack';
+            $scope.students = [{name: 'Jack', course: 'MPP', gpa: 3.9}, {name: 'Alex', course: 'WAP', gpa: 3.0},{name: 'Sophie', course: 'MWA', gpa: 2.5}];
+
+            $scope.number = 0;
+            $scope.increment = (value) => {
+                $scope.number += value;
+            }
+            $scope.decrement = (value) => {
+                $scope.number -= value;
+            }
+        }
+
+        function firstController ($scope) {
+            let vm = this;
+            vm.name = 'John';
+            $scope.students = [{name: 'Jack', course: 'MPP', gpa: 3.9}, {name: 'Alex', course: 'WAP', gpa: 3.0},{name: 'Sophie', course: 'MWA', gpa: 2.5}];
+
+            $scope.number = 0;
+            $scope.increment = (value) => {
+                $scope.number += value;
+            }
+            $scope.decrement = (value) => {
+                $scope.number -= value;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div ng-controller='firstController as Jack'>
+        <ul>
+            <li ng-repeat="person in students">
+                {{person.name}}, {{person.gpa}}, {{person.course}}
+            </li>
+        </ul>
+
+        Number is: {{number}}
+        <br>
+        <button ng-click="increment(5)">+5</button>
+        <button ng-click="decrement(5)">-5</button>
+        <br>
+        {{Jack.name}}
+        <div ng-controller='secondController as John'>
+            {{Jack.name}}
+        </div>
+    </div>
+</body>
+
+</html>
