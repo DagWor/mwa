@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Books </title>
+    <style>
+        .headers {
+            font-weight: 900;
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Books </h1>
+    <p><input type="text" ng-model="search"></p>
+    <div>
+        <table>
+            <thead>
+                <td class="headers"> Title </td>
+            </thead>
+            <tbody>
+                <tr ng-repeat="book in bksctrl.books | filter : search">
+                    <td> <a href='#/books/{{book._id}}'>{{book.title}}</a>&emsp; </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

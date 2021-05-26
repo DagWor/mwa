@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Book Details </title>
+    <style>
+        .headers {
+            font-weight: 900;
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> {{bk.book.title | uppercase}} </h1>
+    <div>
+        <table>
+            <thead>
+                <td class="headers"> Author </td>
+                <td class="headers"> Year &emsp;</td>
+                <td class="headers"> Edition&emsp;&emsp;&emsp;&emsp; </td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> {{bk.book.author}}&emsp;&emsp;&emsp; </td>
+                    <td> {{bk.book.year}}&emsp; </td>
+                    <td> {{bk.book.edition}}&emsp;&emsp;&emsp;&emsp;&emsp; </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
