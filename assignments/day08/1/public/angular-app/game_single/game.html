@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Game Details </title>
+    <style>
+        .headers {
+            font-weight: 900;
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> {{gm.game.title}} </h1>
+    <div>
+        <table>
+            <thead>
+                <td class="headers"> Price </td>
+                <td class="headers"> Minimum Players &emsp;</td>
+                <td class="headers"> Maximum Players&emsp;&emsp;&emsp;&emsp; </td>
+                <td class="headers"> Game Designer </td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> {{gm.game.price}}&emsp;&emsp;&emsp; </td>
+                    <td> {{gm.game.maxPlayers}}&emsp; </td>
+                    <td> {{gm.game.minPlayers}}&emsp;&emsp;&emsp;&emsp;&emsp; </td>
+                    <td> {{gm.game.designers}}&emsp; </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
