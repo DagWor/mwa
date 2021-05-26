@@ -8,14 +8,17 @@
             font-weight: 900;
             font-size: larger;
         }
+        .center {
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
     <h1> Books </h1>
-    <p><input type="text" ng-model="search"></p>
-    <div>
-        <table>
+    <p><input type="text" ng-model="search" placeholder="Search Book"></p>
+    <div class="center">
+        <table style="margin: auto;">
             <thead>
                 <td class="headers"> Title </td>
             </thead>
