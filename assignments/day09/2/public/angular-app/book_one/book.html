@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Book Details </title>
+    <style>
+        .headers {
+            font-weight: 900;
+            font-size: larger;
+        }
+        button {
+            margin-top: 2em;
+            width: 15%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> {{vm.book.title | uppercase}} </h1>
+    <div>
+        <table style="margin: auto; margin-top: 3%;">
+            <thead>
+                <td class="headers"> Author </td>
+                <td class="headers"> Year &emsp;</td>
+                <td class="headers"> Edition&emsp;&emsp;&emsp;&emsp; </td>
+                <td class="headers"> Price&emsp;&emsp;&emsp;&emsp; </td>
+                <td class="headers"> Rating&emsp;&emsp;&emsp;&emsp; </td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> {{vm.book.author}}&emsp;&emsp;&emsp; </td>
+                    <td> {{vm.book.year}}&emsp; </td>
+                    <td> {{vm.book.edition}}&emsp;&emsp;&emsp;&emsp;&emsp; </td>
+                    <td> {{vm.book.price}}&emsp;&emsp;&emsp;&emsp;&emsp; </td>
+                    <td> {{vm.book.rating}}&emsp;&emsp;&emsp;&emsp;&emsp; </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button ng-init='dialog=false' ng-click='dialog=true'
+            class="btn-danger">Delete Book</button><BR />
+        <div ng-show='dialog'>
+            <dialog open>
+                Are you sure?
+                <button style="width: 100%;"
+                    ng-click='vm.deleteBook(vm.book._id); dialog=false'>Yes</button>
+                <button style="width: 100%;" ng-click='dialog=false'>No</button>
+            </dialog>
+        </div </div>
+</body>
+
+</html>

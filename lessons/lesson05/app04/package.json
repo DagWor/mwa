@@ -1,12 +1,12 @@
 {
-  "name": "app01",
+  "name": "app04",
   "version": "1.0.0",
-  "description": "mongoDb to NodeJS",
-  "main": "app01.js",
+  "description": "Form Validation",
+  "main": "app04.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app01.js",
-    "server": "nodemon app01.js"
+    "start": "node app04.js",
+    "server": "nodemon app04.js"
   },
   "author": "Dagmawi Worku",
   "license": "ISC",

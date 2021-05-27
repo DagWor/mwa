@@ -1,0 +1,31 @@
+<h1> {{vm.game.title}} </h1>
+{{vm.game.designers}}
+
+<game-rating stars={{vm.rating}}></game-rating>
+
+<div>
+    Rate: {{vm.game.rate}}
+</div>
+<div>
+    Price: {{vm.game.price | currency}}
+</div>
+
+<div>
+    Minimum Players :{{vm.game.minPlayers}}
+</div>
+
+<div>
+    Maximum Players : {{vm.game.maxPlayers}}
+</div>
+<div>
+    Publisher : {{vm.game.publisher.name}}
+</div>
+<br>
+<button ng-init='dialog=false' ng-click='dialog=true' class="btn-danger">Delete Game</button><BR />
+<div ng-show='dialog'>
+    <dialog open>
+        Are you sure?
+        <button ng-click='vm.deleteGame(vm.game._id); dialog=false'>Yes</button>
+        <button ng-click='dialog=false'>No</button>
+    </dialog>
+</div>

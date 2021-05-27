@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Books </title>
+    <style>
+        .headers {
+            font-weight: 900;
+            font-size: larger;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        input,
+        button {
+            margin-top: 0.5em;
+            width: 15%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Books </h1>
+    <p><input type="text" ng-model="search" placeholder="Search Book"></p>
+    <div class="center">
+        <table style="margin: auto;">
+            <thead>
+                <td class="headers"> Title </td>
+            </thead>
+            <tbody>
+                <tr ng-repeat="book in vm.books | filter : search">
+                    <td> <a href='#/books/{{book._id}}'>{{book.title}}</a>&emsp;
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button ng-init='add=false; btn=true' ng-click='add=true; btn=false'
+            ng-show='btn' class="btn-success">Add Book</button>
+        <div ng-show='add'>
+            <form ng-controller="BookListController" name="vm.bookForm"
+                ng-submit="vm.addBook()">
+
+
+                <input type="text" name="title" required placeholder="Title"
+                    ng-model="vm.newBookTitle" style="color:black" /><br />
+
+                <input type="text" placeholder="Edition" name="edition" required
+                    ng-model="vm.newBookEdition" style="color:black"
+                    ng-pattern="/^[0-9]+$/" />
+                <br
+                    ng-show="vm.bookForm.edition.$dirty && vm.bookForm.edition.$invalid">
+                <span
+                    ng-show="vm.bookForm.edition.$dirty && vm.bookForm.edition.$invalid"
+                    style="color:red">Edition must be a number</span>
+
+                <br />
+
+                <input type="text" name="price" required
+                    ng-model="vm.newBookPrice" style="color:black"
+                    ng-pattern="/^[0-9]+.*[0-9]*$/" placeholder="Price" />
+                <br
+                    ng-show="vm.bookForm.price.$dirty && vm.bookForm.price.$invalid">
+                <span
+                    ng-show="vm.bookForm.price.$dirty && vm.bookForm.price.$invalid"
+                    style="color:red">Price must be a number</span>
+
+                <br>
+
+                <input type="text" name="year" required                   ng-model="vm.newBookYear" style="color:red"
+                    ng-pattern="/^[0-9]{4}$/" placeholder="Year" />
+                <br
+                    ng-show="vm.bookForm.year.$dirty && vm.bookForm.year.$invalid">
+                <span
+                    ng-show="vm.bookForm.year.$dirty && vm.bookForm.year.$invalid"
+                    style="color:red">Invalid year</span>
+
+                <br />
+
+                <input type="text" name="rating" required
+                    ng-model="vm.newBookRating" style="color:black"
+                    ng-pattern="/^[0-5]$/" placeholder="Rating" />
+                <br
+                    ng-show="vm.bookForm.rating.$dirty && vm.bookForm.rating.$invalid">
+                <span
+                    ng-show="vm.bookForm.rating.$dirty && vm.bookForm.rating.$invalid"
+                    style="color:red">Rating must be between 0 and 5.</span>
+
+                <br />
+
+                <input type="text" name="author" required
+                    ng-model="vm.newBookAuthor" placeholder="Author"
+                    style="color:black" />
+                <br />
+
+                <button type="submit" class="btn-success">Add Book</button>
+
+            </form>
+            <button ng-show='add' ng-click='btn=true; add=false'>Cancel</button>
+        </div>
+</body>
+</div>
+
+</html>

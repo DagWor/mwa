@@ -9,6 +9,6 @@ function config($routeProvider, $locationProvider) {
     }).when('/games/:gameId', {
         templateUrl: 'angular-app/game_single/game.html',
         controller: 'GameController',
-        controllerAs: 'gm'
+        controllerAs: 'vm'
     })
 }

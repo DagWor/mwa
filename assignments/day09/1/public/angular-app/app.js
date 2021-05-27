@@ -5,10 +5,10 @@ function config($routeProvider, $locationProvider) {
     $routeProvider.when('/', {
         templateUrl: 'angular-app/games_list/gamesList.html',
         controller: 'GamesListController',
-        controllerAs: 'gmctrl'
+        controllerAs: 'vm'
     }).when('/games/:gameId', {
         templateUrl: 'angular-app/game_single/game.html',
         controller: 'GameController',
-        controllerAs: 'gm'
+        controllerAs: 'vm'
     })
 }

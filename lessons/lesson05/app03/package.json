@@ -1,12 +1,12 @@
 {
-  "name": "app01",
+  "name": "app03",
   "version": "1.0.0",
-  "description": "mongoDb to NodeJS",
-  "main": "app01.js",
+  "description": "MEAN Games Custom Directive",
+  "main": "app03.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app01.js",
-    "server": "nodemon app01.js"
+    "start": "node app03.js",
+    "server": "nodemon app03.js"
   },
   "author": "Dagmawi Worku",
   "license": "ISC",

@@ -10,7 +10,10 @@ app.use('/css', (req, res, next) => {
     next();
 })
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')))
+app.use(express.urlencoded({extended: false}));
+app.use(express.json({extended: false}));
 app.use('/api', api);
 
 const server = app.listen(app.get("port"), () => {

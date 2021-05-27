@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="booksApp">
+<head>
+    <link href="css\bootstrap.min.css" rel="stylesheet">
+    <link href="css\custom.css" rel="stylesheet">
+    <title>Books</title>
+</head>
+<body>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.min.js"></script>
+
+    <script src="angular-app/app.js"></script>
+    <script src="angular-app/book_data_factory/bookDataFactory.js"></script>
+    <script src="angular-app/book_one/book.controller.js"></script>
+    <script src="angular-app/books_list/booksList.controller.js"></script>
+
+
+    <footer class="footer">
+        <div class="container">
+            <p style="text-align: center;">
+                <a href="http://compro.miu.edu" target="_blank">
+                    <img src="./images/books.png"
+                        alt="maharishi image">
+                </a>
+                <br>
+                <small style="color: black;">
+                    &copy;2021 Dagmawi, All Right Reserved
+                </small>
+            </p>
+        </div>
+    </footer>
+
+    <div ng-view style="text-align: center;"></div>
+</body>
+</html>
