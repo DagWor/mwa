@@ -13,6 +13,12 @@ function JobsDataFactory($http) {
         },
         deleteOneJob: function (jobId){
             return $http.delete('api/jobs/' + jobId).then(complete).catch(failed)
+        },
+        updateJob: function (jobId, job){
+            return $http.patch('api/jobs/' + jobId, job).then(complete).catch(failed)
+        },
+        replaceJob: function (jobId, job){
+            return $http.put('api/jobs/' + jobId, job).then(complete).catch(failed)
         }
     }
 }

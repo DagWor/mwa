@@ -20,8 +20,6 @@ function JobsListController(JobsDataFactory, $location){
             }
         }
 
-        console.log(newJob)
-
         JobsDataFactory.addOneJob(newJob).then(console.log("success"));
         $location.path('/')
     }

@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
     <title>Job Details</title>
     <style>
         span {
@@ -23,6 +26,12 @@
             </span>{{vm.job.description}}</li>
         <li ng-show="vm.job.experience"><span>Experience:
             </span>{{vm.job.experience}}</li>
+        <li ng-show="vm.job.skills"> <span>Skills</span>
+            <ul>
+                <li ng-repeat='skill in vm.job.skills | limitTo: 2'>{{skill}}
+                </li>
+            </ul>
+        </li>
         <li ng-show="vm.job.location.city"><span>City:
             </span>{{vm.job.location.city}}</li>
         <li ng-show="vm.job.location.state"><span>State:
@@ -31,16 +40,69 @@
             </span>{{vm.job.location.zip}}
         </li>
         <li ng-show="vm.job.postDate"><span>Posted Date:
-            </span>{{vm.job.postDate}}
+            </span>{{vm.job.postDate | date}}
         </li>
     </ul>
     <br>
-    <button ng-init='dialog=false' ng-click='dialog=true' class="btn-danger">Delete Job</button><BR />
+
+
+    <button ng-init=' btn=true;' ng-click=' btn=false; dialog=true'
+        ng-show='btn'>Delete Job</button>
+        <button ng-init='add=false;' ng-click='add=true;'>Update Job</button>
+    <div ng-show='add'>
+        <form ng-controller="JobController" name="vm.jobForm"
+            ng-submit="vm.updateJob(vm.job._id)">
+            Title: <input type="text" name="title" ng-model="vm.newJobTitle"
+                style="color:black" /><BR />
+
+            Salary: <input type="number" name="salary"
+                ng-model="vm.newJobSalary" style="color:black"
+                ng-pattern="/^[0-9]*.[0-9]*$/" />
+            <span
+                ng-show="vm.jobForm.salary.$dirty && vm.jobForm.salary.$invalid"
+                style="color:red">Salary must be a number</span>
+
+            <BR />
+
+            Description: <textarea type="text" name="description"
+                ng-model="vm.newJobDescription" style="color:black"></textarea>
+            <BR />
+
+            Experience (in years): <input type="number" name="experience"
+                ng-model="vm.newJobExperience" style="color:black"
+                ng-pattern="/^[0-9]*$/" />
+            <span
+                ng-show="vm.jobForm.experience.$dirty && vm.jobForm.experience.$invalid"
+                style="color:red">Invalid Experience Years</span>
+
+            <BR />
+
+            Skill: <input type="text" name="skill" ng-model="vm.newJobSkill"
+                style="color:black" />
+            <BR />
+
+            City: <input type="text" name="city" ng-model="vm.newJobCity"
+                style="color:black" />
+            <BR />
+
+            State: <input type="text" name="state" ng-model="vm.newJobState" />
+            <BR />
+
+            Zip: <input type="number" name="zip" ng-model="vm.newJobZip"
+                style="color:black" />
+            <BR />
+
+            <button type="submit" class="btn-success">Update</button>
+
+        </form>
+        <button ng-show='add' ng-click='btn=true; add=false'>Cancel</button>
+    </div>
     <div ng-show='dialog'>
         <dialog open>
             Are you sure?
-            <button ng-click='vm.deleteJob(vm.job._id); dialog=false'>Yes</button>
-            <button ng-click='dialog=false'>No</button>
+            <button
+                ng-click='vm.deleteJob(vm.job._id); dialog=false'>Yes</button>
+            <button ng-click='dialog=false; btn=true'>No</button>
         </dialog>
     </div>
 </body>

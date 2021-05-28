@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="booksApp">
+
 <head>
     <link href="css\bootstrap.min.css" rel="stylesheet">
     <link href="css\custom.css" rel="stylesheet">
+    <!-- CSS only -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+        crossorigin="anonymous">
+
     <title>Books</title>
 </head>
+
 <body>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.min.js"></script>
+
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.min.js"></script>
 
     <script src="angular-app/app.js"></script>
     <script src="angular-app/book_data_factory/bookDataFactory.js"></script>
@@ -20,8 +31,7 @@
         <div class="container">
             <p style="text-align: center;">
                 <a href="http://compro.miu.edu" target="_blank">
-                    <img src="./images/books.png"
-                        alt="maharishi image">
+                    <img src="./images/books.png" alt="maharishi image">
                 </a>
                 <br>
                 <small style="color: black;">
@@ -33,4 +43,5 @@
 
     <div ng-view style="text-align: center;"></div>
 </body>
+
 </html>
