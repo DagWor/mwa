@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <form ng-controller="MyController" name="vm.myForm" ng-submit="vm.add()">
+        Age
+        <input type="text" name="age" required ng-pattern="/^[0-9]{2,3}$/"
+            ng-model="age">
+        <br>
+        <span ng-show="vm.myForm.age.$dirty && vm.myForm.age.$invalid">
+            Age should be greater than 9
+        </span>
+        <br>
+        Name
+        <input type="text" name="name" required ng-minlength="5"
+            ng-maxlength="12" ng-model="name">
+        <br>
+        <span ng-show="vm.myForm.name.$dirty && vm.myForm.name.$invalid">
+            Name should be between 5 and 12 characters
+        </span>
+        <br>
+        <input type="submit" value="add">
+    </form>
+</body>
+</html>

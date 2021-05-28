@@ -1,0 +1,69 @@
+<h1 style="padding-left: 3% ;">{{vm.pageTitle}}</h1>
+<div style="text-align: center;">
+    <table border="1" style="margin: auto; width: 50%;">
+        <thead>
+            <td>Title</td>
+            <td>Salary</td>
+            <td>State</td>
+            <td>Experience</td>
+            <td>Details</td>
+        </thead>
+        <tr ng-repeat='job in vm.jobs track by $index'>
+            <td>{{job.title}}</td>
+            <td>{{job.salary}}</td>
+            <td>{{job.location.state}}</td>
+            <td>{{job.experience}}</td>
+            <td><a href="#/jobs/{{job._id}}">View Details</a></td>
+        </tr>
+    </table>
+
+    <button ng-init='add=false; btn=true' ng-click='add=true; btn=false' ng-show='btn'>Add Job</button>
+    <div ng-show='add'>
+        <form ng-controller="JobsListController" name="vm.jobForm"
+            ng-submit="vm.addJob()">
+            Title: <input type="text" name="title" required
+                ng-model="vm.newJobTitle" style="color:black" /><BR />
+
+            Salary: <input type="number" name="salary" required
+                ng-model="vm.newJobSalary" style="color:black" ng-pattern="/^[0-9]*.[0-9]*$/"/>
+                <span
+                    ng-show="vm.jobForm.salary.$dirty && vm.jobForm.salary.$invalid"
+                    style="color:red">Salary must be a number</span>
+    
+                <BR />
+
+            Description: <input type="text" name="description" required
+                ng-model="vm.newJobDescription" style="color:black"/>
+                <BR />
+
+            Experience (in years): <input type="number" name="experience" required
+                ng-model="vm.newJobExperience" style="color:black" ng-pattern="/^[0-9]*$/"/>
+                <span
+                    ng-show="vm.jobForm.experience.$dirty && vm.jobForm.experience.$invalid"
+                    style="color:red">Invalid Experience Years</span>
+    
+                <BR />
+
+            Skill: <input type="text" name="skill"
+                required ng-model="vm.newJobSkill" style="color:black" />
+                <BR />
+
+            City: <input type="text" name="city"
+                required ng-model="vm.newJobCity"
+                style="color:black" />
+                <BR />
+
+            State: <input type="text" name="state"
+                required ng-model="vm.newJobState"/>
+                <BR />
+
+            Zip: <input type="number" name="zip" required
+                ng-model="vm.newJobZip" style="color:black" />
+                <BR />
+
+                <button type="submit" class="btn-success">Post Job</button>
+
+        </form>
+        <button ng-show='add' ng-click='btn=true; add=false'>Cancel</button>
+    </div>
+</div>
