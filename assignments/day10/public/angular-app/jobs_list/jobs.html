@@ -38,7 +38,7 @@
                 <td class="headers">Details</td>
             </thead>
             <tr ng-repeat='job in vm.jobs | filter: search'>
-                <td>{{job.title}}</td>
+                <td>{{job.title | vowel: 'e'}}</td>
                 <td>{{job.salary}}</td>
                 <td>{{job.location.state}}</td>
                 <td>{{job.experience}}</td>

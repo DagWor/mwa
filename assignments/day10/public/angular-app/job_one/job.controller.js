@@ -14,7 +14,6 @@ function JobController(JobsDataFactory, $routeParams, $location, $route) {
 
     vm.updateJob = function (jobId) {
         if (vm.newJobTitle && vm.newJobSalary && vm.newJobExperience && vm.newJobDescription && vm.newJobCity && vm.newJobSkill && vm.newJobState && vm.newJobZip) {
-            console.log("1")
             const newJob = {
                 title: vm.newJobTitle,
                 salary: vm.newJobSalary,
@@ -28,11 +27,10 @@ function JobController(JobsDataFactory, $routeParams, $location, $route) {
                 }
             }
 
-            JobsDataFactory.replaceJob(jobId, newJob).then(console.log("updated"))
-            $location.path("/");
+            JobsDataFactory.replaceJob(jobId, newJob).then(() => $route.reload())
+            
 
         } else {
-            console.log("2")
             const newJob = {}
             if (vm.newJobTitle) newJob.title = vm.newJobTitle;
             if (vm.newJobSalary) newJob.salary = vm.newJobSalary;
