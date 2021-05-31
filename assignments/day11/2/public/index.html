@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="booksApp">
+
+<head>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+        crossorigin="anonymous">
+    <title>Books</title>
+</head>
+
+<body>
+
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.min.js"></script>
+
+    <script src="angular-app/app.js"></script>
+    <script src="angular-app/book_data_factory/bookDataFactory.js"></script>
+    <script src="angular-app/book_one/book.controller.js"></script>
+    <script src="angular-app/books_list/booksList.controller.js"></script>
+    <script src="angular-app/register/register.controller.js"></script>
+    <script src="angular-app/user_data_factory/userData.factory.js"></script>
+    <script src="angular-app/game_rating_directive/gameRating.js"></script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Home</a>
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="#/books">Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="#/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#/register">Register</a>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div ng-view style="text-align: center;"></div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Book Details </title>
+    <style>
+        .headers {
+            font-weight: 900;
+            font-size: larger;
+        }
+
+        button {
+            margin-top: 2em;
+            width: 15%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1> {{vm.book.title | uppercase}} </h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td scope="col" ng-show="vm.book.author"> Author </td>
+                    <td scope="col" ng-show="vm.book.year"> Year </td>
+                    <td scope="col" ng-show="vm.book.edition"> Edition </td>
+                    <td scope="col" ng-show="vm.book.price"> Price </td>
+                    <td scope="col" ng-show="vm.book.rating"> Rating </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td ng-show="vm.book.author"> {{vm.book.author}} </td>
+                    <td ng-show="vm.book.year"> {{vm.book.year}} </td>
+                    <td ng-show="vm.book.edition"> {{vm.book.edition}} </td>
+                    <td ng-show="vm.book.price"> {{vm.book.price}} </td>
+                    <td ng-show="vm.book.rating"> {{vm.book.rating}} </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary" ng-click='vm.back()'>Back</button>
+        <button class="btn btn-warning" ng-init='update=false;'
+            ng-show="btn" ng-click='update=true'>Update</button>
+        <button class="btn btn-danger" ng-init='dialog=false; btn=true'
+            ng-show="btn" ng-click='dialog=true; btn=false'>Delete</button>
+        <div ng-show='dialog'>
+            <dialog open>
+                Are you sure?
+                <button style="width: 100%;"
+                    ng-click='vm.deleteBook(vm.book._id); dialog=false'>Yes</button>
+                <button style="width: 100%;" ng-click='dialog=false'>No</button>
+            </dialog>
+        </div>
+        
+    <div ng-show="update" style="text-align: center; width: 35%;"
+    class="container-fluid">
+    <form ng-controller="BookController" name="vm.bookForm"
+        ng-submit="vm.updateBook(vm.book._id)">
+        <div class="mb-3">
+            <label for="vm.title" class="form-label">Title</label>
+            <input type="text" name="title"  class="form-control"
+                ng-model="vm.title" />
+        </div>
+        <div class="mb-3">
+            <label for="vm.edition" class="form-label">Edition</label>
+            <input type="text" name="edition" ng-model="vm.edition"
+                class="form-control" style="color:black"
+                ng-pattern="/^[0-9]+$/" />
+        </div>
+
+        <span
+            ng-show="vm.bookForm.edition.$dirty && vm.bookForm.edition.$invalid"
+            style="color:red">Edition must be a number</span>
+
+
+        <div class="mb-3">
+            <label for="vm.price" class="form-label">Price</label>
+            <input type="text" name="price" ng-model="vm.price"
+                 class="form-control" style="color:black"
+                ng-pattern="/^[0-9]+.*[0-9]*$/" />
+        </div>
+        <span
+            ng-show="vm.bookForm.price.$dirty && vm.bookForm.price.$invalid"
+            style="color:red">Price must be a number</span>
+
+
+        <div class="mb-3">
+            <label for="vm.year" class="form-label">Year</label>
+            <input type="text" name="year" ng-model="vm.year"
+                class="form-control" style="color:red"
+                ng-pattern="/^[0-9]{4}$/" />
+        </div>
+        <span ng-show="vm.bookForm.year.$dirty && vm.bookForm.year.$invalid"
+            style="color:red">Invalid year</span>
+
+        <div class="mb-3">
+            <label for="vm.rating" class="form-label">Rating</label>
+            <input type="text" name="rating" class="form-control"
+                ng-model="vm.rating" style="color:black"
+                ng-pattern="/^[0-5]$/" />
+        </div>
+        <span
+            ng-show="vm.bookForm.rating.$dirty && vm.bookForm.rating.$invalid"
+            style="color:red">Rating must be between 0 and 5.</span>
+
+        <div class="mb-3">
+            <label for="vm.author" class="form-label">Author</label>
+            <input type="text" name="author" ng-model="vm.author"
+                class="form-control" style="color:black" />
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn-success">Update Book</button>
+        </div>
+
+    </form>
+    <button ng-show='update'
+        ng-click='btn=true; update=false'>Cancel</button>
+</div>
+</body>
+
+</html>

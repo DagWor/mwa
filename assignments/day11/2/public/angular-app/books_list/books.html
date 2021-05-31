@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Books </title>
+</head>
+
+<body>
+    <div class="container">
+        <h1> Books </h1>
+        <select style="width: 35%; margin: auto;" class="form-select" ng-model="vm.search" >
+            <option value="" ng-click="vm.searchBooks(''); m=false" selected>Choose Author</option>
+            <option ng-repeat="author in vm.authors" value="{{author}}" ng-click="vm.searchBooks(author)">{{author}}</option>
+        </select>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="book in vm.books track by $index">
+                    <td>{{book.title}}</td>
+                    <td> <a href='#/books/{{book._id}}'>View Details</a>&emsp;
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button ng-show="vm.offset > 0"
+            ng-click="vm.previousPage()">previous</button>
+        <button ng-show="vm.next;" ng-click="vm.nextPage()">next</button>
+        <button class="btn btn-secondary" ng-init='update=false; btn=true'
+            ng-show="btn" ng-click='update=true; btn=false'>Add</button>
+    </div>
+    <div ng-show="update" style="text-align: center; width: 35%;"
+        class="container-fluid">
+        <form ng-controller="BookListController" name="vm.bookForm"
+            ng-submit="vm.addBook()">
+            <div class="mb-3">
+                <label for="vm.title" class="form-label">Title</label>
+                <input type="text" name="title" required class="form-control"
+                    ng-model="vm.title" />
+            </div>
+            <div class="mb-3">
+                <label for="vm.edition" class="form-label">Edition</label>
+                <input type="text" name="edition" ng-model="vm.edition"
+                    class="form-control" style="color:black"
+                    ng-pattern="/^[0-9]+$/" />
+            </div>
+
+            <span
+                ng-show="vm.bookForm.edition.$dirty && vm.bookForm.edition.$invalid"
+                style="color:red">Edition must be a number</span>
+
+
+            <div class="mb-3">
+                <label for="vm.price" class="form-label">Price</label>
+                <input type="text" name="price" ng-model="vm.price"
+                    required class="form-control" style="color:black"
+                    ng-pattern="/^[0-9]+.*[0-9]*$/" />
+            </div>
+            <span
+                ng-show="vm.bookForm.price.$dirty && vm.bookForm.price.$invalid"
+                style="color:red">Price must be a number</span>
+
+
+            <div class="mb-3">
+                <label for="vm.year" class="form-label">Year</label>
+                <input type="text" name="year" ng-model="vm.year"
+                    class="form-control" style="color:red"
+                    ng-pattern="/^[0-9]{4}$/" />
+            </div>
+            <span ng-show="vm.bookForm.year.$dirty && vm.bookForm.year.$invalid"
+                style="color:red">Invalid year</span>
+
+            <div class="mb-3">
+                <label for="vm.rating" class="form-label">Rating</label>
+                <input type="text" name="rating" class="form-control"
+                    ng-model="vm.rating" style="color:black"
+                    ng-pattern="/^[0-5]$/" />
+            </div>
+            <span
+                ng-show="vm.bookForm.rating.$dirty && vm.bookForm.rating.$invalid"
+                style="color:red">Rating must be between 0 and 5.</span>
+
+            <div class="mb-3">
+                <label for="vm.author" class="form-label">Author</label>
+                <input type="text" name="author" ng-model="vm.author"
+                    class="form-control" style="color:black" />
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn-success">Add Book</button>
+            </div>
+
+        </form>
+        <button ng-show='update'
+            ng-click='btn=true; update=false'>Cancel</button>
+    </div>
+</body>
+
+</html>
