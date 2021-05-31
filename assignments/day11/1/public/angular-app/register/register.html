@@ -12,14 +12,11 @@
 
 <body>
     <h1>Register</h1>
-    <div ng-if='vm.message' class="alert alert-success" role='alert'>
-        <p>{{vm.message}}</p>
-    </div>
-    <div ng-if='vm.err' class="alert alert-danger" role='alert'>
-        <p>{{vm.err}}</p>
-    </div>
 
     <div style="margin: auto; width: 20%;">
+        <p ng-if='vm.message' class="alert alert-success" role='alert'>
+            {{vm.message}}</p>
+        <p ng-if='vm.err' class="alert alert-danger" role='alert'>{{vm.err}}</p>
         <form name="vm.registerForm" ng-submit="vm.register()">
             <div class="form-group">
                 <input type="text" name="name" placeholder="name"

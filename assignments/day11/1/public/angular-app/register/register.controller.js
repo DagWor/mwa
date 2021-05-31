@@ -13,6 +13,7 @@ function RegisterController($http, UserDataFactory, $location) {
         if(!vm.password && !vm.username) vm.err = "Please enter password and username"
         else if(vm.password !== vm.passwordRepeat) vm.err = "Passwords do not match"
         else UserDataFactory.registerUser(user).then(() => {
+            vm.err = false
             vm.message = 'Successful registration, please login'
         })
     }
