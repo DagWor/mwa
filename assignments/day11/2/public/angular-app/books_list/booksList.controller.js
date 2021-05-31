@@ -8,7 +8,6 @@ function BookListController(BookDataFactory, $route, $routeParams) {
     if (!$routeParams.count) vm.count = 5;
     BookDataFactory.getAllBooks().then(response => {
         
-        console.log(response)
         vm.books = response
     });
     BookDataFactory.getAllAuthors().then(response => vm.authors = response);
@@ -38,7 +37,6 @@ function BookListController(BookDataFactory, $route, $routeParams) {
         vm.offset += 5;
         BookDataFactory.getAllBooks(vm.offset, vm.count).then(res => {
             vm.books = res;
-            console.log(res)
             if (vm.books.length % 5 !== 0) vm.next = false
         })
     }
