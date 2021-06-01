@@ -1,6 +1,35 @@
-const Publisher = require('../data/publisher.model')
+const User = require('../data/user.model')
 const bcrypt = require('bcrypt-nodejs')
 const jwt = require('jsonwebtoken')
+
+module.exports.registerUser = (req, res) => {
+    const response = {
+        status: 201,
+        message: ""
+    }
+
+    if (req.body && req.body.username && req.body.password) {
+        let newUser = {
+            username: req.body.username,
+            password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+        }
+        if (req.body.name) newUser.name = req.body.name
+
+        User.create(newUser, (err, resp) => {
+            if (err) {
+                response.status = 400
+                response.message = "Username already taken"
+            }
+            else response.message = resp;
+
+            res.status(response.status).json(response.message)
+        })
+    } else {
+        response.status = 400
+        response.message = { 'message': 'Username or password requied' }
+        res.status(response.status).json(response.message)
+    }
+}
 
 module.exports.authenticateUser = (req, res) => {
     const response = {
@@ -14,7 +43,7 @@ module.exports.authenticateUser = (req, res) => {
         }
         if (req.body.name) newUser.name = req.body.name
 
-        Publisher.findOne(authUser, (err, user) => {
+        User.findOne(authUser, (err, user) => {
             if (err) {
                 response.status = 500
                 response.message = { 'message': "Internal Server Error" }
@@ -24,6 +53,7 @@ module.exports.authenticateUser = (req, res) => {
             }
             else {
                 if (bcrypt.compareSync(req.body.password, user.password)) {
+                    
                     const token = jwt.sign({ username: user.name }, 'cs572', { expiresIn: 3600 })
                     response.message = {
                         success: true,
@@ -52,8 +82,8 @@ module.exports.authenticate = (req, res, next) => {
         const token = req.headers.authorization.split(" ")[1];
         jwt.verify(token, 'cs572', (err, decoded) => {
             if (err) {
-                let message = { 'message': 'Unauthorized' }
-                res.status(401).json(message)
+                let message = { 'message': err }
+                res.status(403).json(message)
             } else {
                 req.user = decoded.user
                 next();
@@ -61,7 +91,7 @@ module.exports.authenticate = (req, res, next) => {
         })
     }
     else {
-        let message = { 'message': 'No token provided' }
+        let message = { 'message': 'No token' }
         res.status(403).json(message)
     }
 }

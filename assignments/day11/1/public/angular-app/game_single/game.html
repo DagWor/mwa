@@ -1,7 +1,7 @@
 <h1> {{vm.game.title}} </h1>
 {{vm.game.designers}}
 
-<game-rating stars={{vm.rating}}></game-rating>
+<game-rating stars=vm.rating></game-rating>
 
 <div>
     Rate: {{vm.game.rate}}
@@ -20,12 +20,26 @@
 <div>
     Publisher : {{vm.game.publisher.name}}
 </div>
-<br>
-<button ng-init='dialog=false' ng-click='dialog=true' class="btn-danger">Delete Game</button><BR />
-<div ng-show='dialog'>
-    <dialog open>
-        Are you sure?
-        <button ng-click='vm.deleteGame(vm.game._id); dialog=false'>Yes</button>
-        <button ng-click='dialog=false'>No</button>
-    </dialog>
+
+
+<div ng-if="vm.isLoggedIn()">
+    <form ng-controller="GameController" name="vm.updateGameForm"
+        ng-submit="vm.updateGame()">
+
+        To add a edited game please fill in all the fields below:<BR />
+
+        Title: <input type="text" name="title" placeholder="{{vm.game.title}}"
+            required ng-model="vm.editedGameTitle" style="color:black" /><BR />
+        Price: <input type="text" name="price" placeholder="{{vm.game.price}}"
+            required ng-model="vm.editedGamePrice" style="color:black" /><BR />
+        Year of Publication: <input type="text" name="year"
+            placeholder="{{vm.game.year}}" required ng-model="vm.editedGameYear"
+            style="color:black" /><BR />
+        Rating: <input type="text" name="rating" required
+            ng-value={{vm.game.rate}} ng-model="vm.editedGameRate"
+            style="color:black" /><BR />
+        Designer name: {{vm.game.designers}}<BR />
+        <button type="submit" class="btn-success">Update Game</button><BR />
+
+    </form>
 </div>

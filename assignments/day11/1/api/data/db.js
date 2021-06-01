@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 require('./game.model')
+require('./user.model')
 const dbname = 'meanGamesGeo';
 const dburl = `mongodb://127.0.0.1:27017/${dbname}`;
 

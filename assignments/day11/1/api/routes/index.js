@@ -3,40 +3,42 @@ const router = express.Router();
 const gameController = require('../controller/games.controller')
 const publisherController = require('../controller/publisher.controller')
 const reviewController = require('../controller/review.controller')
-const authController = require('../controller/auth.controller')
+const userController = require('../controller/user.controller')
 
 router.route('/games')
-.get(gameController.gameGetAll)
-.post(gameController.gamesAddOne)
+    .get(gameController.gameGetAll)
+    .post(userController.authenticate, gameController.gamesAddOne)
 
 
 router.route('/games/:id')
-.get(gameController.gameGetById)
-.put(gameController.gamesUpdateOne)
-.delete(gameController.gamesDeleteOne)
-.patch(gameController.gamesPatchOne)
+    .get(gameController.gameGetById)
+    .put(gameController.gamesUpdateOne)
+    .delete(gameController.gamesDeleteOne)
+    .patch(gameController.gamesPatchOne)
 
 
 router.route('/games/:id/publisher')
-.get(publisherController.gameGetPublisher)
-.post(publisherController.publishersAddOne)
-.delete(publisherController.deleteOnePublisher)
-.patch(publisherController.publisherPatchOne)
+    .get(publisherController.gameGetPublisher)
+    .post(publisherController.publishersAddOne)
+    .delete(publisherController.deleteOnePublisher)
+    .patch(publisherController.publisherPatchOne)
 
 router.route('/games/:id/review')
-.post(reviewController.reviewAddOne)
-.get(reviewController.reviewGetAll)
+    .post(reviewController.reviewAddOne)
+    .get(reviewController.reviewGetAll)
 
 router.route('/games/:id/review/:reviewId')
-.delete(reviewController.reviewDeleteOne)
-.patch(reviewController.reviewPatchOne)
-.put(reviewController.reviewUpdateOne)
-.get(reviewController.reveiwGetById)
+    .delete(reviewController.reviewDeleteOne)
+    .patch(reviewController.reviewPatchOne)
+    .put(reviewController.reviewUpdateOne)
+    .get(reviewController.reveiwGetById)
 
 router.route('/users')
-.post(publisherController.registerUser)
+    .post(userController.registerUser)
+    .patch()
+    .put()
 
 router.route('/auth')
-.post(authController.authenticateUser)
+    .post(userController.authenticateUser)
 
 module.exports = router;

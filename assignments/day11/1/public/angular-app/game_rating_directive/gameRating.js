@@ -4,11 +4,8 @@ function GameRating() {
     return {
         restrict: "E",
         templateUrl: 'angular-app/game_rating_directive/game_rating.html',
-        bindToController: true,
-        controller: 'GameController',
-        controllerAs: 'vm',
         $scope: {
-            stars: '@'
+            stars: '=stars'
         }
     }
 }

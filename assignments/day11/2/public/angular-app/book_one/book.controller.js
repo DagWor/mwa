@@ -3,6 +3,9 @@ angular.module('booksApp').controller('BookController', BookController);
 function BookController($routeParams, BookDataFactory, $location, $route){
     let vm = this;
     let bookId = $routeParams.bookId
+    
+    vm.isLoggedIn = () => { return AuthFactory.auth.isLoggedIn; }
+
     BookDataFactory.getOneBook(bookId).then(response => vm.book = response)
     vm.deleteBook = function(bookId) {
         BookDataFactory.deleteOneBook(bookId).then(() => {
@@ -12,7 +15,7 @@ function BookController($routeParams, BookDataFactory, $location, $route){
     }
 
     vm.back = function(){
-        $location.path('/')
+        $location.path('/books')
     }
 
     vm.updateBook = function(bookId) {

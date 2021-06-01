@@ -53,6 +53,7 @@ module.exports.authenticateUser = (req, res) => {
             }
             else {
                 if (bcrypt.compareSync(req.body.password, user.password)) {
+                    
                     const token = jwt.sign({ username: user.name }, 'cs572', { expiresIn: 3600 })
                     response.message = {
                         success: true,
@@ -81,8 +82,8 @@ module.exports.authenticate = (req, res, next) => {
         const token = req.headers.authorization.split(" ")[1];
         jwt.verify(token, 'cs572', (err, decoded) => {
             if (err) {
-                let message = { 'message': 'Unauthorized' }
-                res.status(401).json(message)
+                let message = { 'message': err }
+                res.status(403).json(message)
             } else {
                 req.user = decoded.user
                 next();
@@ -90,7 +91,7 @@ module.exports.authenticate = (req, res, next) => {
         })
     }
     else {
-        let message = { 'message': 'No token provided' }
+        let message = { 'message': 'No token' }
         res.status(403).json(message)
     }
 }

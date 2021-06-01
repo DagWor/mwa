@@ -1,11 +1,14 @@
 angular.module('booksApp').controller('BookListController', BookListController);
 
-function BookListController(BookDataFactory, $route, $routeParams) {
+function BookListController(BookDataFactory, $route, $routeParams, AuthFactory) {
     let vm = this;
     vm.page = 'These are the Books'
     vm.next = true;
     if (!$routeParams.offset) vm.offset = 0;
     if (!$routeParams.count) vm.count = 5;
+
+    vm.isLoggedIn = () => { return AuthFactory.auth.isLoggedIn; }
+
     BookDataFactory.getAllBooks().then(response => {
         
         vm.books = response

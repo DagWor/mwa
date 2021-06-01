@@ -15,6 +15,7 @@ function RegisterController($http, UserDataFactory, $location) {
         else UserDataFactory.registerUser(user).then(() => {
             vm.err = null
             vm.message = 'Successful registration, please login'
+            $location.path('/')
         })
     }
 }

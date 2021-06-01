@@ -101,7 +101,7 @@ module.exports.publisherPatchOne = (req, res) => {
                         }
                     })
                     res.status(response.status).json(response.message)
-                } else res.status(404).json({'message': 'publisher not found'})
+                } else res.status(404).json({ 'message': 'publisher not found' })
             }
         });
     }

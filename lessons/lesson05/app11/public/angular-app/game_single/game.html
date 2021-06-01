@@ -22,16 +22,24 @@
 </div>
 
 
-<form ng-controller="GamesListController" name="vm.updateGameForm"
-    ng-submit="vm.updateGame()">
+<div ng-if="vm.isLoggedIn()">
+    <form ng-controller="GameController" name="vm.updateGameForm"
+        ng-submit="vm.updateGame()">
 
-    To add a edited game please fill in all the fields below:<BR />
+        To add a edited game please fill in all the fields below:<BR />
 
-    Title: <input type="text" name="title" placeholder="{{vm.game.title}}" required ng-model="vm.editedGameTitle" style="color:black" /><BR />
-    Price: <input type="text" name="price" placeholder="{{vm.game.price}}" required ng-model="vm.editedGamePrice" style="color:black" /><BR />
-    Year of Publication: <input type="text" name="year" placeholder="{{vm.game.year}}" required ng-model="vm.editedGameYear" style="color:black" /><BR />
-    Rating: <input type="text" name="rating" required ng-value={{vm.game.rate}} ng-model="vm.editedGameRate" style="color:black" /><BR />
-    Designer name: {{vm.game.designers}}<BR />
-    <button type="submit" class="btn-success">Update Game</button><BR />
+        Title: <input type="text" name="title" placeholder="{{vm.game.title}}"
+            required ng-model="vm.editedGameTitle" style="color:black" /><BR />
+        Price: <input type="text" name="price" placeholder="{{vm.game.price}}"
+            required ng-model="vm.editedGamePrice" style="color:black" /><BR />
+        Year of Publication: <input type="text" name="year"
+            placeholder="{{vm.game.year}}" required ng-model="vm.editedGameYear"
+            style="color:black" /><BR />
+        Rating: <input type="text" name="rating" required
+            ng-value={{vm.game.rate}} ng-model="vm.editedGameRate"
+            style="color:black" /><BR />
+        Designer name: {{vm.game.designers}}<BR />
+        <button type="submit" class="btn-success">Update Game</button><BR />
 
-</form>
+    </form>
+</div>

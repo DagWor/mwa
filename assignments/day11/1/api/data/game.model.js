@@ -5,6 +5,10 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 
 
+const PublisherSchema = new Schema({
+    name: String,
+    country: String
+})
 
 const ReviewSchema = new Schema({
     name: String,
@@ -45,10 +49,7 @@ const GameSchema = new Schema({
     },
     minAge: Number,
     designers: String,
-    publisher: {
-        type: Schema.Types.ObjectId,
-        rel: "publishers"
-    },
+    publisher: PublisherSchema,
     reviews: [ReviewSchema]
 })
 

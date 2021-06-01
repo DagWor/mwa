@@ -79,7 +79,7 @@ module.exports.gamesAddOne = (req, res) => {
 
 
 module.exports.gamesUpdateOne = (req, res) => {
-    if(req.params.id){
+    if (req.params.id) {
         Game.findById(req.params.id).exec((err, game) => {
             const response = {
                 status: 201,
@@ -89,11 +89,11 @@ module.exports.gamesUpdateOne = (req, res) => {
             Game.findByIdAndDelete()
             if (err) res.status(500).json({ 'message': 'Game not found' })
             else if (!game) {
-                response.status = 404   
+                response.status = 404
                 response.message = 'Game not found'
             }
-            if(response.status !== 201) res.status(response.status).json(response.message)
-                
+            if (response.status !== 201) res.status(response.status).json(response.message)
+
             else {
                 game.title = req.body.title
                 game.price = req.body.price
@@ -101,7 +101,7 @@ module.exports.gamesUpdateOne = (req, res) => {
                 game.minAge = req.body.minAge
                 game.publisher = req.body.publisher
                 game.save((err, updatedGame) => {
-                    if(err) {
+                    if (err) {
                         response.status = 500
                         response.message = err
                     } else {
@@ -111,7 +111,7 @@ module.exports.gamesUpdateOne = (req, res) => {
                 })
                 res.status(response.status).json(response.message)
             }
-        
+
         });
     }
 }
@@ -132,11 +132,11 @@ module.exports.gamesPatchOne = (req, res) => {
             if (response.status !== 201) res.status(response.status).json(response.message)
 
             else {
-                if(req.body.title) game.title = req.body.title
-                if(req.body.price) game.price = req.body.price
-                if(req.body.rate) game.rate = req.body.rate
-                if(req.body.minAge) game.minAge = req.body.minAge
-                if(req.body.publisher) game.publisher = req.body.minAge
+                if (req.body.title) game.title = req.body.title
+                if (req.body.price) game.price = req.body.price
+                if (req.body.rate) game.rate = req.body.rate
+                if (req.body.minAge) game.minAge = req.body.minAge
+                if (req.body.publisher) game.publisher = req.body.minAge
                 game.save((err, updatedGame) => {
                     if (err) {
                         response.status = 500
@@ -163,7 +163,7 @@ module.exports.gamesDeleteOne = (req, res) => {
             if (err) {
                 response.status = 500
                 response.message = "Internal Server Error"
-            } else if(!game) {
+            } else if (!game) {
                 response.status = 404
                 response.message = "Game not found in database"
             } else {
@@ -171,7 +171,7 @@ module.exports.gamesDeleteOne = (req, res) => {
                 response.message = "Game Deleted Successfully"
             }
 
-            res.status(response.status).json({'message': response.message})
+            res.status(response.status).json({ 'message': response.message })
         })
     } else {
         response.status = 404

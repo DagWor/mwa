@@ -7,7 +7,7 @@ const authController = require('../controller/auth.controller')
 
 router.route('/books')
 .get(bookController.getAllBooks)
-.post(bookController.addOneBook)
+.post(authController.authenticate, bookController.addOneBook)
 
 router.route('/book/:id')
 .get(bookController.getBookById)
@@ -40,6 +40,9 @@ router.route('/book/:id/reviews/:reviewId')
 
 router.route('/users')
 .post(userController.registerUser)
+
+router.route('/users/:username')
+.get(userController.findUserByUsername)
 
 router.route('/auth')
 .post(authController.authenticateUser)

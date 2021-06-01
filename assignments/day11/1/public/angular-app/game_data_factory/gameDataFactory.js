@@ -8,11 +8,11 @@ function GameDataFactory($http) {
         getOneGame: function getOneGame(gameId) {
             return $http.get(`/api/games/${gameId}`).then(complete).catch(failed)
         },
-        addOneGame: function addOneGame(game){
+        addOneGame: function addOneGame(game) {
             return $http.post('/api/games', game).then(complete).catch(failed)
         },
-        deleteOneGame: function deleteOneGame(gameId){
-            return $http.delete('/api/games/'+ gameId).then(complete).catch(failed)
+        replaceOneGame: function replaceOneGame(gameId, game) {
+            return $http.put('/api/games/' + gameId, game).then(complete).catch(failed)
         }
     }
 }

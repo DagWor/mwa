@@ -1,36 +1,4 @@
 const Game = require('../data/game.model')
-const Publisher = require('../data/publisher.model')
-const bcrypt = require('bcrypt-nodejs')
-const jwt = require('jsonwebtoken')
-
-module.exports.registerUser = (req, res) => {
-    const response = {
-        status: 201,
-        message: ""
-    }
-
-    if (req.body && req.body.username && req.body.password) {
-        let newUser = {
-            username: req.body.username,
-            password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
-        }
-        if (req.body.name) newUser.name = req.body.name
-
-        Publisher.create(newUser, (err, resp) => {
-            if (err) {
-                response.status = 400
-                response.message = "Username already taken"
-            }
-            else response.message = resp;
-
-            res.status(response.status).json(response.message)
-        })
-    } else {
-        response.status = 400
-        response.message = { 'message': 'Username or password requied' }
-        res.status(response.status).json(response.message)
-    }
-}
 
 const _addPublisher = (req, res, game, response) => {
     game.publisher.name = req.body.name;
@@ -133,7 +101,7 @@ module.exports.publisherPatchOne = (req, res) => {
                         }
                     })
                     res.status(response.status).json(response.message)
-                } else res.status(404).json({'message': 'publisher not found'})
+                } else res.status(404).json({ 'message': 'publisher not found' })
             }
         });
     }

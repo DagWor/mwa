@@ -1,11 +1,13 @@
 angular.module('meanGames').controller('GamesListController', GamesListController);
 
-function GamesListController(GameDataFactory) {
+function GamesListController(GameDataFactory, AuthFactory) {
     let vm = this;
     vm.title = "Mean Games App";
     // vm.isSubmitted = false;
+    vm.isLoggedIn = () => { return AuthFactory.auth.isLoggedIn; }
+
     GameDataFactory.getAllGames().then((response) => vm.games = response)
-    vm.addGame = function() {
+    vm.addGame = function () {
         const postData = {
             title: vm.newGameTitle,
             price: vm.newGamePrice,
@@ -16,9 +18,9 @@ function GamesListController(GameDataFactory) {
             minAge: vm.newGameMinAge,
             designers: vm.newGameDesigner
         }
-        if(vm.gameForm.$valid){
+        if (vm.gameForm.$valid) {
             console.log(postData);
-            GameDataFactory.addOneGame(postData).then(() => console.log("success"))  
+            GameDataFactory.addOneGame(postData).then(() => console.log("success"))
         }
     }
 

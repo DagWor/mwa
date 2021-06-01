@@ -31,7 +31,7 @@
             ng-click="vm.previousPage()">previous</button>
         <button ng-show="vm.next;" ng-click="vm.nextPage()">next</button>
         <button class="btn btn-secondary" ng-init='update=false; btn=true'
-            ng-show="btn" ng-click='update=true; btn=false'>Add</button>
+            ng-show="btn; vm.isLoggedIn()" ng-click='update=true; btn=false'>Add</button>
     </div>
     <div ng-show="update" style="text-align: center; width: 35%;"
         class="container-fluid">

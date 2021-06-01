@@ -4,9 +4,12 @@ function _getStarRating(stars) {
     return new Array(stars)
 }
 
-function GameController(GameDataFactory, $routeParams, $location) {
+function GameController(GameDataFactory, $routeParams, $location, AuthFactory) {
     const vm = this;
     const gameId = $routeParams.gameId
+
+    vm.isLoggedIn = () => { return AuthFactory.auth.isLoggedIn; }
+
     GameDataFactory.getOneGame(gameId).then((response) => {
         vm.game = response;
         console.log(response);
@@ -18,18 +21,19 @@ function GameController(GameDataFactory, $routeParams, $location) {
 
     })
 
-    vm.updateGame = function() {
+    vm.updateGame = function () {
         const game = {
             title: vm.editedGameTitle,
             year: vm.editedGameYear,
             price: vm.editedGamePrice,
-            rate: vm.editedGameRate,
-            minPlayers: vm.game.minPlayers,
-            maxPlayers: vm.game.maxPlayers,
-            minAge: vm.game.minAge,
-            designers: vm.game.designers,
-            publisher: vm.game.publisher
+            rate: vm.editedGameRate
         }
+
+        if (vm.game.minPlayers) game.minPlayers = vm.game.minPlayers
+        if (vm.game.maxPlayers) game.maxPlayers = vm.game.maxPlayers
+        if (vm.game.minAge) game.minAge = vm.game.minAge
+        if (vm.game.designers) game.designers = vm.game.designers
+        if (vm.game.publisher) game.publisher = vm.game.publisher
 
         GameDataFactory.replaceOneGame(gameId, game).then(() => {
             console.log("success");

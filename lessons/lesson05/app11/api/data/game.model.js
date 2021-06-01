@@ -4,7 +4,7 @@ mongoose.set('useCreateIndex', true);
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 
-  
+
 const PublisherSchema = new Schema({
     name: String,
     country: String

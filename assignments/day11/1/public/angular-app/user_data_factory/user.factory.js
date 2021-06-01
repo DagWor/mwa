@@ -2,16 +2,16 @@ angular.module('meanGames').factory('UserDataFactory', UserDataFactory);
 
 function UserDataFactory($http) {
     return {
-        registerUser: function (user){
-            return $http.post('api/users/', user).then(complete).catch(failed)
+        login: function (user) {
+            return $http.post('/api/auth', user).then(complete).catch(failed);
         }
     }
 }
 
-function complete(response){
+function complete(response) {
     return response.data;
 }
 
-function failed(error){
+function failed(error) {
     return error.status.statusText;
 }

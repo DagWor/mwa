@@ -228,7 +228,7 @@ module.exports.reviewDeleteOne = (req, res) => {
 
             let review = game.reviews.findIndex(a => a._id == req.params.reviewId);
             game.reviews.pop(review)
-            
+
             game.save((err, updatedGame) => {
                 if (err) {
                     response.status = 500

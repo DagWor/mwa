@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <style>
+        .form-group {
+            margin: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <div ng-if='vm.message' class="alert alert-success" role='alert'>
+        <p>{{vm.message}}</p>
+    </div>
+    <div ng-if='vm.err' class="alert alert-danger" role='alert'>
+        <p>{{vm.err}}</p>
+    </div>
+
+    <div style="margin: auto; width: 20%;">
+        <form name="vm.loginForm" ng-submit="vm.login()">
+            <div class="form-group">
+                <input type="text" name="username" placeholder="username"
+                    class="form-control" id="username" ng-model="vm.username"
+                    autocapitalize="off">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="password"
+                    class="form-control" id="password" ng-model="vm.password"
+                    autocapitalize="off">
+            </div>
+            <button type="submit" class="btn btn-success">Login</button>
+        </form>
+
+    </div>
+</body>
+
+</html>

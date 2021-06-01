@@ -251,3 +251,23 @@ module.exports.getAllAuthors = (req, res) => {
         res.status(response.status).json(response.message)
     })
 }
+
+module.exports.findUserByUsername = (req, res) => {
+    
+    const response = {
+        status: 200,
+        message: ""
+    }
+    User.findOne({name: req.params.username}).exec((err, user) => {
+
+        if (err) {
+            response.status = 500
+            response.message = 'Internal Server Error'
+        }
+
+        if (!user) response.message = 'User not found'
+        else response.message = user
+
+        res.status(response.status).json(response.message)
+    })
+}

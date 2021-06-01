@@ -41,9 +41,9 @@
         </table>
         <button class="btn btn-primary" ng-click='vm.back()'>Back</button>
         <button class="btn btn-warning" ng-init='update=false;'
-            ng-show="btn" ng-click='update=true'>Update</button>
+            ng-show="vm.isLoggedIn()" ng-click='update=true'>Update</button>
         <button class="btn btn-danger" ng-init='dialog=false; btn=true'
-            ng-show="btn" ng-click='dialog=true; btn=false'>Delete</button>
+            ng-show="vm.isLoggedIn()" ng-click='dialog=true; btn=false'>Delete</button>
         <div ng-show='dialog'>
             <dialog open>
                 Are you sure?
