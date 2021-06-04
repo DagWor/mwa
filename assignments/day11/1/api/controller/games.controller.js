@@ -1,6 +1,6 @@
 const Game = require('../data/game.model')
 
-module.exports.gameGetAll = (req, res) => {
+module.exports.gameGetAll = async (req, res) => {
     let offset = 0
     let count = 5
 
@@ -12,13 +12,13 @@ module.exports.gameGetAll = (req, res) => {
     if (isNaN(offset) || isNaN(count)) res.status(400).json({ 'message': 'Query String offset and count should be numbers' });
 
     if (count > maxCount) res.status(400).json({ 'message': 'Count can not be greater than ' + maxCount });
+    
 
-    // Another approach to get games with limitations
     Game.find({}, {}, { skip: offset, limit: count }, (err, games) => {
         if (err) res.status(500).json(err);
         else res.status(200).json(games);
     })
-
+    
     /*Game.find().skip(offset).limit(count).exec((err, games) => {
         res.status(200).json(games);
     })*/

@@ -1,0 +1,9 @@
+1. Reliability
+    - One of the biggest headaches when using JavaScript is the lack of compilation which leads to making silly mistakes such as misspellings. These can be a major debugging issue.
+    - TypeScript is consistent. It will be easier for someone who has not written the code to understand it. Which in turn is a huge performance booster when trying to maintain it. With Consistency come productivity.
+
+2. It is Typed
+    - It is strongly typed. Which means more structure and order to our code. I believe this makes it the better in large organizations. Even though it still needs to be compiled into JavaScript for our browser to run it.
+
+3. Object-oriented
+    - TypeScript opens the doors to Object-oriented concepts such as Inheritance, Interfaces, Abstract classes... These opens up a whole new world of using different design patterns like decorators, which allow us to modify class attributes without actually touching the class itself.
