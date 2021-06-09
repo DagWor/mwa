@@ -1,0 +1,22 @@
+{
+  "name": "app11",
+  "version": "1.0.0",
+  "description": "Form Validation",
+  "main": "app11.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app11.js",
+    "server": "nodemon app11.js"
+  },
+  "author": "Dagmawi Worku",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.4.0",
+    "angular-jwt": "^0.1.11",
+    "angular-route": "^1.4.0",
+    "bcrypt-nodejs": "^0.0.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.10",
+    "nodemon": "^2.0.7"
+  }
+}

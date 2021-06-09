@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <div>
+        <br>
+        <h4>{{ title }}</h4>
+        <ul>
+            <!-- {{game.title}} {{game.price}} -->
+            <li *ngFor="let book of books">
+                <a routerLink="/book/{{book._id}}">{{book.title}}
+                    {{book.year}}</a>
+            </li>
+        </ul>
+        <button [hidden]="!previous" (click)="previousPage()">previous</button>
+        <button [hidden]="!next" (click)="nextPage()">next</button>
+        <button class="btn btn-secondary" (click)='btner()' (click)='adder()'>Add</button>
+    </div>
+
+    <div ng-show="add" style="text-align: center; width: 35%;"
+        class="container-fluid">
+        <form name="bookForm" ng-submit="addBook()">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" required class="form-control"
+                    ng-model="title" />
+            </div>
+            <div class="mb-3">
+                <label for="edition" class="form-label">Edition</label>
+                <input type="text" name="edition" ng-model="edition"
+                    class="form-control" style="color:black"
+                    ng-pattern="/^[0-9]+$/" />
+            </div>
+
+            <span ng-show="bookForm.edition.$dirty && bookForm.edition.$invalid"
+                style="color:red">Edition must be a number</span>
+
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="text" name="price" ng-model="price" required
+                    class="form-control" style="color:black"
+                    ng-pattern="/^[0-9]+.*[0-9]*$/" />
+            </div>
+            <span ng-show="bookForm.price.$dirty && bookForm.price.$invalid"
+                style="color:red">Price must be a number</span>
+
+
+            <div class="mb-3">
+                <label for="year" class="form-label">Year</label>
+                <input type="text" name="year" ng-model="year"
+                    class="form-control" style="color:red"
+                    ng-pattern="/^[0-9]{4}$/" />
+            </div>
+            <span ng-show="bookForm.year.$dirty && bookForm.year.$invalid"
+                style="color:red">Invalid year</span>
+
+            <div class="mb-3">
+                <label for="rating" class="form-label">Rating</label>
+                <input type="text" name="rating" class="form-control"
+                    ng-model="rating" style="color:black"
+                    ng-pattern="/^[0-5]$/" />
+            </div>
+            <span ng-show="bookForm.rating.$dirty && bookForm.rating.$invalid"
+                style="color:red">Rating must be between 0 and 5.</span>
+
+            <div class="mb-3">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" name="author" ng-model="author"
+                    class="form-control" style="color:black" />
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn-success">Add Book</button>
+            </div>
+
+        </form>
+        <button ng-show='add' (click)='adder();'
+            (click)='btner();'>Cancel</button>
+    </div>
+</body>
+
+</html>

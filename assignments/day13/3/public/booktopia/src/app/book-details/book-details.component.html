@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Book Details </title>
+    <style>
+        .headers {
+            font-weight: 900;
+            font-size: larger;
+        }
+
+        button {
+            margin-top: 2em;
+            width: 15%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1> {{book.title | uppercase}} </h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td scope="col"> Author </td>
+                    <td scope="col"> Year </td>
+                    <td scope="col"> Edition </td>
+                    <td scope="col"> Price </td>
+                    <td scope="col"> Rating </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> {{book.author}} </td>
+                    <td> {{book.year}} </td>
+                    <td> {{book.edition}} </td>
+                    <td> {{book.price}} </td>
+                    <td> {{book.rating}} </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary" (click)="goBack()">Back</button>
+        <button class="btn btn-warning"
+            (click)='updater()'>Update</button>
+        <button class="btn btn-danger" [hidden]="btn"
+            (click)='dialog=true; btn=false'>Delete</button>
+        <div [hidden]='!dialog'>
+            <dialog open>
+                Are you sure?
+                <button style="width: 100%;"
+                    (click)='deleteBook(book._id); dialog=false'>Yes</button>
+                <button style="width: 100%;" (click)='dialog=false'>No</button>
+            </dialog>
+        </div>
+
+        <div [hidden]="!update" style="text-align: center; width: 35%;"
+            class="container-fluid">
+            <form name="bookForm"
+                ng-submit="updateBook(book._id)">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" name="title" class="form-control"
+                        (ngModel)="title" />
+                </div>
+                <div class="mb-3">
+                    <label for="edition" class="form-label">Edition</label>
+                    <input type="text" name="edition" (ngModel)="book.edition"
+                        class="form-control" style="color:black"/>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="text" name="price" (ngModel)="book.price"
+                        class="form-control" style="color:black" />
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="year" class="form-label">Year</label>
+                    <input type="text" name="year" (ngModel)="book.year"
+                        class="form-control" style="color:red"/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Rating</label>
+                    <input type="text" name="rating" class="form-control"
+                        (ngModel)="book.rating" style="color:black"  />
+                </div>
+
+                <div class="mb-3">
+                    <label for="author" class="form-label">Author</label>
+                    <input type="text" name="author" (ngModel)="book.author"
+                        class="form-control" style="color:black" />
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn-success">Update
+                        Book</button>
+                </div>
+
+            </form>
+            <button [hidden]='update'
+                (click)='btn=true; update=false'>Cancel</button>
+        </div>
+    </div>
+</body>
+
+</html>
