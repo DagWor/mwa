@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+
+    <br>
+    <div>
+        Title: {{game.title }}
+    </div>
+
+    <div>
+        Price: {{game.price | currency}}
+    </div>
+
+    <div>
+        Minimum Players :{{game.minPlayers}}
+    </div>
+
+    <div>
+        Maximum Players : {{game.maxPlayers}}
+    </div>
+    <div>
+        Publisher : {{game.publisher.name}}
+    </div>
+
+    <br>
+    <div>
+        <button routerLink="/games">Go Back</button>
+    </div>
+</body>
+
+</html>
