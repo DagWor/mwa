@@ -1,0 +1,16 @@
+<div style="padding: 3% 0 0 3%">
+
+    <h1>{{title}}</h1>
+    <br>
+    <div style="display: flex;">
+        <br>
+        <a routerLink="/" class="nav-link">Home</a>
+        <a routerLink="/games" class="nav-link">Games</a>
+        <a *ngIf="isLoggedIn" routerLink="/profile" class="nav-link">Profile</a>
+        <a *ngIf="!isLoggedIn" routerLink="/register" class="nav-link">Register</a>
+        <a *ngIf="!isLoggedIn" routerLink="/login" class="nav-link">Login</a>
+
+        <a *ngIf="isLoggedIn" routerLink="/profile" class="nav-link">{{ loggedInUser }}</a>
+        <a *ngIf="isLoggedIn" (click)="logout()" class="nav-link">logout</a>
+    </div>
+</div>

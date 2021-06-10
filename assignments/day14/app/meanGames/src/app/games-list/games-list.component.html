@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <app-wrapper>
+        <div>
+            <br>
+            <h4>{{ title }}</h4>
+            <ul>
+                <li *ngFor="let game of games">
+                    <app-game-item [game]="game"> </app-game-item>
+                </li>
+            </ul>
+        </div>
+    </app-wrapper>
+</body>
+
+</html>
